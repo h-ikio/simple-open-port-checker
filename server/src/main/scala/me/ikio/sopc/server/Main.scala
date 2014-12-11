@@ -2,9 +2,10 @@ package me.ikio.sopc.server
 
 import java.net.InetSocketAddress
 
-import akka.actor.{Props, ActorSystem}
+import akka.actor.{ActorSystem, Props}
 import com.typesafe.config.ConfigFactory
 
+// TODO add test
 // TODO parse options
 object Main extends App {
   val port = if (args.size == 1) args(1).toInt else 12345

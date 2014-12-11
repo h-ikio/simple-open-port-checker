@@ -2,8 +2,8 @@ package me.ikio.sopc.server
 
 import java.net.InetSocketAddress
 
-import akka.actor.{ActorRef, Actor}
-import akka.io.{Udp, IO}
+import akka.actor.{Actor, ActorRef}
+import akka.io.{IO, Udp}
 
 class SopcServer(isa: InetSocketAddress) extends Actor {
   import context.system
@@ -16,7 +16,6 @@ class SopcServer(isa: InetSocketAddress) extends Actor {
 
   def ready(socket: ActorRef): Receive = {
     case Udp.Received(data, remote) =>
-      val processed = data.decodeString("US-ASCII")
       println(s"Received request.")
       socket ! Udp.Send(data, remote) // echo back
     case Udp.Unbind => socket ! Udp.Unbind

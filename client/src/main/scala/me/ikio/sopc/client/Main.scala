@@ -2,9 +2,10 @@ package me.ikio.sopc.client
 
 import java.net.InetSocketAddress
 
-import akka.actor.{ActorRef, Props, ActorSystem}
+import akka.actor.{ActorRef, ActorSystem, Props}
 import com.typesafe.config.ConfigFactory
 
+// TODO add test
 // TODO parse options
 object Main extends App {
   val (hostname, port, timeout) =
@@ -32,7 +33,6 @@ object Main extends App {
   val system = ActorSystem("system", ConfigFactory.load(ConfigFactory.parseString(config)))
   sys.addShutdownHook(system.shutdown())
 
-  ConfigFactory.parseString("")
   val clientProps = Props(classOf[SopcClient], new InetSocketAddress(hostname, port))
   val client = system.actorOf(clientProps, "client")
 

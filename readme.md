@@ -18,8 +18,8 @@ Default port number is 12345.
 
 Default hostname is "127.0.0.1", port number is 12345 and inverval is 10000 msec.
 
-Client sends ping message to server at a specified interval and server echoes back to client if received message from client. 
+Client sends ping message to server at a specified interval and server echoes back to client if receives message from client. 
 
-If client received response from server successfully, then prints following message.
+If client receives response from server successfully, then prints following message.
 
     Received response. RTT: 21 millis.
